@@ -7,14 +7,26 @@ const vueApp = Vue.createApp({
             inventory: 8,
             details: ['50% Cotton', '30% Wool', '20% Polyester'],
             variants: [
-                { id: 1234, color: 'green' },
-                { id: 1235, color: 'blue' }
-            ]
+                { id: 1234, color: 'green', image: './assets/images/socks_green.jpg' },
+                { id: 1235, color: 'blue', image: './assets/images/socks_blue.jpg' }
+            ],
+            cart: 0
         }
     },
     computed: {
         productDescription() {
             return `Description of ${this.product}`;
+        }
+    },
+    methods: {
+        updateCart(addOrRemove) {
+            if (addOrRemove)
+                this.cart += 1;
+            else
+                this.cart -= 1;
+        },
+        updateImage(variantImage) {
+            this.image = variantImage;
         }
     }
 })
