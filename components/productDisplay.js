@@ -98,7 +98,7 @@ vueApp.component('product-display', {
         updateCart(addOrRemove) {
             this.checkIfInstock;
             if (addOrRemove) {
-                this.cart += 1;
+                this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
                 if (this.inStock)
                     this.inventory -= 1
             }
