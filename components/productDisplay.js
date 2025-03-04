@@ -103,7 +103,7 @@ vueApp.component('product-display', {
                     this.inventory -= 1
             }
             else {
-                this.cart -= 1;
+              this.$emit('remove-to-cart', this.variants[this.selectedVariant].id);
                 if (this.cart > 0)
                     this.inventory += 1
             }
