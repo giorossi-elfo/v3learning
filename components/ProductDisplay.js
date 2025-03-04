@@ -47,6 +47,8 @@ vueApp.component('product-display', {
             </button> -->
           </div>
         </div>
+        <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+        <review-form @review-submitted="addReview"></review-form>
       </div>
     `,
     data() {
@@ -60,7 +62,8 @@ vueApp.component('product-display', {
             variants: [
                 { id: 1234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
                 { id: 1235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 8 }
-            ]
+            ],
+            reviews: []
         }
     },
     computed: {
@@ -110,6 +113,9 @@ vueApp.component('product-display', {
         },
         updateVariant(index) {
             this.selectedVariant = index;
+        },
+        addReview(review) {
+          this.reviews.push(review)
         }
     }
 })
